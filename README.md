@@ -5,3 +5,8 @@
 ```
     docker run -d -t --name rabbitmq -p 9900:5672 -e RABBITMQ_DEFAULT_USER=rabbitadmin -e RABBITMQ_DEFAULT_PASS=admin rabbitmq:management
 ```
+
+
+
+## 现有问题
+HTTP转发基本上没什么问题，但是TCP由于时序问题，连接失败率很高，而且长时间未响应会自动断开。
