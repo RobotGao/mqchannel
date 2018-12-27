@@ -48,8 +48,7 @@ public class Client {
                     .handler(new ChannelInitializer<SocketChannel>() {
                         public void initChannel(SocketChannel ch) throws Exception {
                             ChannelPipeline pipeline = ch.pipeline();
-                            pipeline.addLast(new IdleStateHandler(1, 1, 1,TimeUnit.SECONDS));
-                            //pipeline.addLast(new LengthFieldBasedFrameDecoder(1024, 0, 4, -4, 0));
+                            pipeline.addLast(new IdleStateHandler(3, 3, 3,TimeUnit.SECONDS));
                             handler.setClient(client);
                             pipeline.addLast(handler);
                             channel = pipeline.channel();

@@ -22,8 +22,7 @@ public class HandlerInitializer extends ChannelInitializer<SocketChannel> {
 	
 	protected void initChannel(SocketChannel sc) throws Exception {
 		ChannelPipeline pipeline = sc.pipeline();
-		pipeline.addLast(new IdleStateHandler(1, 1, 1,TimeUnit.SECONDS));
-		//pipeline.addLast(new LengthFieldBasedFrameDecoder(1024, 0, 4, -4, 0));
+		pipeline.addLast(new IdleStateHandler(3, 3, 0,TimeUnit.SECONDS));
 		pipeline.addLast("ServerHandler",serverHandler);
 		logger.info("initChannel");
 	}
