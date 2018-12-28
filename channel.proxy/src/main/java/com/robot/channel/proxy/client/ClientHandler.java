@@ -98,7 +98,7 @@ public class ClientHandler implements ChannelInboundHandler {
 				// 未进行读操作
 				logger.info("READER_IDLE");
 				// 超时关闭channel
-				ctx.close();
+				//ctx.close();
 
 			} else if (event.state().equals(IdleState.WRITER_IDLE)) {
 				logger.info("WRITER_IDLE");

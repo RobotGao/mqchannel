@@ -35,6 +35,12 @@ public class Client {
     private ClientHandler handler;
     private boolean flag = false;
     private ChannelFuture f;
+
+//     private static final int READ_IDEL_TIME_OUT = 4;
+//     private static final int WRITE_IDEL_TIME_OUT = 0;
+//     private static final int ALL_IDEL_TIME_OUT = 0;
+
+
     public boolean connect(String host, int port) {
         try {
             logger.info("connecting...");
@@ -48,7 +54,7 @@ public class Client {
                     .handler(new ChannelInitializer<SocketChannel>() {
                         public void initChannel(SocketChannel ch) throws Exception {
                             ChannelPipeline pipeline = ch.pipeline();
-                            pipeline.addLast(new IdleStateHandler(3, 3, 3,TimeUnit.SECONDS));
+                            //pipeline.addLast(new IdleStateHandler(READ_IDEL_TIME_OUT, WRITE_IDEL_TIME_OUT, ALL_IDEL_TIME_OUT,TimeUnit.SECONDS));
                             handler.setClient(client);
                             pipeline.addLast(handler);
                             channel = pipeline.channel();

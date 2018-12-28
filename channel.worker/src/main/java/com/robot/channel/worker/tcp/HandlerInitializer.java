@@ -19,10 +19,15 @@ public class HandlerInitializer extends ChannelInitializer<SocketChannel> {
 	private final static Logger logger = Logger.getLogger(HandlerInitializer.class);
 	@Autowired
 	private ServerHandler serverHandler;
+
+//   private static final int READ_IDEL_TIME_OUT = 5;
+//   private static final int WRITE_IDEL_TIME_OUT = 0;
+//   private static final int ALL_IDEL_TIME_OUT = 0;
+
 	
 	protected void initChannel(SocketChannel sc) throws Exception {
 		ChannelPipeline pipeline = sc.pipeline();
-		pipeline.addLast(new IdleStateHandler(3, 3, 0,TimeUnit.SECONDS));
+		//pipeline.addLast(new IdleStateHandler(READ_IDEL_TIME_OUT, WRITE_IDEL_TIME_OUT, ALL_IDEL_TIME_OUT,TimeUnit.SECONDS));
 		pipeline.addLast("ServerHandler",serverHandler);
 		logger.info("initChannel");
 	}
